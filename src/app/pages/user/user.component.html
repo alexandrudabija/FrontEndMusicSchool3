@@ -1,0 +1,104 @@
+
+    
+    
+    
+    
+    <div class="w-full h-full flex justify-around p-1 ">
+
+
+        <div class="personalData w-3/12 h-full  bg-stone-200  text-center p-1 " >
+
+       
+
+            <h2 class="break-words" >Personal data </h2>
+        
+            <span class="max-md:font-thin mt-2 form-control w-auto h-auto  break-words"> <span>Firstname :</span>   {{this.user.firstname}}</span>
+            <span class="max-md:font-thin mt-2 form-control w-auto h-auto break-words"> <span>Lastname :</span> {{this.user.lastname}}</span>
+            <span class=" mt-2 form-control w-auto h-auto break-words">Email <span >{{this.user.email}}</span></span>
+            <span class="max-md:font-thin mt-2 form-control w-auto h-auto break-words"><span>Country</span> {{this.user.country}}</span>
+            <!-- <h3><span>Date of Registration</span> {{this.user.dateRegistration | date   }}</h3> -->
+
+        </div>
+    
+    
+    
+    <div class="  w-full h-full  flex flex-col  justify-items-center items-center   ">
+    
+    
+    
+                        <div class=" header flex justify-between items-center max-md:flex-col   w-11/12
+                         bg-stone-300	p-1 ">
+                            <h1 class="m-2 form-control text-center w-auto h-auto break-words"> My Account</h1>
+                            <h1 class=" m-2 form-control text-center w-auto h-auto break-words"> Number of orders {{( this.orders$ | async)?.length}}</h1> 
+                            <h1 class="m-2 form-control text-center w-auto h-auto break-words"> Customer number: {{this.user.idUser}}</h1>
+    
+                        </div>
+    
+    
+    
+                    <div id="scrollbar" class="w-11/12 h-auto flex justify-center   bg-stone-200  ">
+    
+                                          
+
+
+
+   
+    
+    
+                                                <div  class="w-11/12 h-fit flex flex-col justify-items-center items-center text-center bg-stone-200 	">
+
+
+                                                    <h1 class="order">Orders</h1>
+                                                <div  *ngFor="let obj of  (this.orders$ | async) " class="m-10  h-96 w-full flex  min-[1130px]:flex-row   max-md:flex-col items-center  justify-around  form-control "> 
+                                                    
+                                                   
+                                                        
+                                                            
+                                                            <p class="w-auto h-auto break-words"> <span class="form-control  mb-4 order break-words">Order number</span> {{obj.idOrder}} </p>      
+                                                            
+                                                            <p class="w-auto h-auto break-words"><span class="form-control  mb-4 break-words">Date</span>  {{obj.dateOrder | date:'medium' }}</p>
+                                                            <p class="w-auto h-auto break-words"><span class="form-control  mb-4 break-words" >Quantity</span>{{countQty(obj.items)}} <span>Articles</span></p>
+            
+                            
+
+                                                            <p class="w-auto h-auto break-words"><span class="form-control  mb-4 break-words" >Amount</span>   {{obj.Total | currency}}  </p>
+                                                        
+    
+                                                  <hr>
+                                                   
+                                                         <div id="scrollbar" class=" w-4/12 max-md:w-auto  flex flex-col items-center justify-center" >
+                                                       
+                                                         <div class="h-80 flex flex-col items-center mt-4 ">
+
+                                                                   <div *ngFor="let item of obj.items" class=" mt-24 mb-1  w-auto   flex flex-col items-center justify-center ">
+                                                                    <img src="{{item.imgProduct}}" class="w-6/12 h-8/12 max-md:w-4/12  max-md:h-4/12  rounded">
+
+                                                                            <h6> {{item.nameProduct}}</h6>   
+                                                                              <h6><span>Brand :</span> {{item.brandProduct}}</h6>
+                                                                              <h6><span>Price:</span> {{item.priceProduct |currency}}</h6> 
+                                                                              <h6><span>Quantity :</span> {{item.quantityProduct}}</h6> 
+                                                                               
+                                                                                    
+                                                                        </div>
+
+                                                         </div>
+
+                                                                      
+                                                                
+                                                    </div>
+    
+                                                </div>
+    
+                                            </div>
+                                        
+    
+                    </div>
+    
+                
+    
+    </div>
+
+
+    </div>
+    
+   

@@ -1,0 +1,14 @@
+
+
+<form [formGroup]="UserForm" (ngSubmit)="this.getUser()" >
+<label for="email">Email address</label>
+
+<input formControlName="email" type="email">
+<span class="text-red-600	" *ngIf='email && email.invalid && email.touched  '>This input filed is not valid</span>
+<label for="password">Password</label>
+<input  formControlName="password" type="password">
+<span class="text-red-600	" *ngIf='password && password.invalid && password.touched  '>This input filed is not valid</span>
+
+
+<button mat-raised-button  [disabled]="UserForm.invalid"    >Sign in to account  </button>
+</form>
